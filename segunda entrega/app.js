@@ -3,45 +3,63 @@ let ropa
 let entrada;
 let total=0;
 let suma =0;
-let pantalon=1500;
-let remera=1000;
-let buzo=2000;
-let zapatillas=3000;
 let pago;
+let producto = [ "1 - Pantalon", "2 - Remera", "3 - Buzo","4 - Zapatillas"];
+const carrito = [];
+const listaproductos= producto.join("\n");
+ 
+
+ 
+ console.log (listaproductos);
+
 
 
 do{
-    ropa=prompt ( "Ingrese el numero de lo que quiere comprar: 1 pantalon; 2 remera; 3 Buzo; 4 Zapatillas");
+    ropa=prompt ( `Ingrese el numero de lo que quiere comprar:\n${listaproductos}` );
 
+    producto[0]=1500;
+    producto[1]=1000;
+    producto[2]=2000;
+    producto[3]=3000;
 
+    
 
 switch (ropa) { 
     case "1":
 
-        console.log ("Pantalon,valor 1500");
-        suma= sumar(total ,pantalon);
+        console.log (`Pantalon, valor ${producto[0]}`);
+        suma= sumar(total ,producto[0]);
+
+        carrito.push("Pantalon");
+        
       break;
 
     case "2":
 
-        console.log("Remera, valor 1000");
+        console.log(`Remera, valor ${producto[1]}`);
+        suma=sumar(total ,producto[1]);
 
-        suma=sumar(total ,remera);
+        carrito.push("Remera");
      break;
-    
-    
+
     case "3":
 
-        console.log ("Buzo, valor 2000");
-        suma= sumar(total ,buzo);
+        console.log (`Buzo, valor ${producto[2]}`);
+        suma= sumar(total ,producto[2]);
+
+        carrito.push("Buzo");
+        
+
 
      break;
 
      case "4":
 
-        console.log ("zapatillas, valor 3000");
+        console.log (`zapatillas, valor ${producto[3]}`);
+        suma= sumar(total ,producto[3]);
 
-        suma= sumar(total ,zapatillas);
+        carrito.push("Zapatillas");
+        
 
 
         break;
@@ -51,9 +69,16 @@ switch (ropa) {
             console.log ("no tenemos ese producto");
         }
 
+        console.log(`Productos selecionados:\n${carrito.join("\n")}`);
+
+
+
         total=suma;
-        
-        console.log (`El total por ahora es: ${total}`);
+
+       
+       
+        console.log (`Total: ${total}`);
+       
 
 
 
@@ -65,10 +90,16 @@ switch (ropa) {
 
   }while (entrada != "fin");
 
-  console.log (`El precio que tiene que abonar es:  ${total}`);
+  
 
+  if (total == 0){
 
- 
+    console .log ("No seleciono ningun producto")
+  }
+  else{
+    
+
+  console.log (`El precio que tiene que abonar es:  ${total}. \n Por los productos : ${carrito.join("\n")} `);
 
   pago=prompt ("Como va a abonar credito; debito o efectivo");
 
@@ -91,6 +122,11 @@ switch (ropa) {
   }
   
 
+
+  }
+ 
+
+ 
   
 
 
